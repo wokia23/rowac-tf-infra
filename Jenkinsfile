@@ -1,4 +1,10 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good',
+    'FAILURE': 'danger',
+    ]
+
 pipeline {
+
     agent any
     
     tools {
@@ -39,4 +45,13 @@ pipeline {
             }
         }
     }
+
+     post {
+        always {
+            echo 'sending build result'
+            slackSend channel: "#devops-personal", color: COLOR_MAP[currentBuild.currentResult], message: "Build Started by wokia: ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)"
+        }
+    }
 }
+
+
