@@ -33,6 +33,12 @@ pipeline {
             }
         }
         
+        stage('Terraform Linting with tflint') {
+            steps {
+                sh 'tflint --init'
+                sh 'tflint'
+            }
+        }
         stage('terraform plan') {
             steps {
                 sh 'terraform plan'
