@@ -1,5 +1,9 @@
 #Creating web server for airbnb
 
+terraform {
+  required_version = ">= 1.0.0"
+}
+
 resource "aws_instance" "airbnb-web-server" {
   ami           =var.ami_id
   instance_type = var.instance_type
