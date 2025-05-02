@@ -33,6 +33,15 @@ pipeline {
             }
         }
         
+        stage('TFLint') {
+            steps {
+                sh '''
+                    curl -s https://raw.githubusercontent.com/terraform-linters/tflint/master/install_linux.sh | bash
+                    tflint --init
+                    tflint
+                '''
+            }
+        }
         stage('Terraform Linting with tflint') {
             steps {
                 sh 'tflint --init'
