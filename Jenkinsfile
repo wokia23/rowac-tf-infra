@@ -15,6 +15,7 @@ pipeline {
         stage('SCM checkout') {
             steps {
                 echo 'cloning code base to jenkins server'
+                echo 'testing CI code base with jenkins server'
                 git branch: 'main', credentialsId: 'be2f769a-7507-4e41-9c3f-1bb0d303e73a', url: 'https://github.com/wokia23/rowac-tf-infra.git'
                 sh 'ls'
             }
