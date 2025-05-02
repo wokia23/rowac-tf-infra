@@ -19,3 +19,11 @@ resource "aws_instance" "airbnb-prod-server" {
   }
 }
 
+resource "aws_instance" "airbnb-geo-server" {
+  ami           =var.ami_id
+  instance_type = var.instance_type
+
+  tags = {
+    Name = "airbnb-geo-server"
+  }
+}
